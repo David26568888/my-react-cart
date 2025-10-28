@@ -13,20 +13,29 @@ function Navbar({ cartCount, isLoggedIn, onLogout}) {
         <li>
           <Link to="/products">商品</Link>
         </li>
+        {isLoggedIn ? (<>
+
         <li>
-          <Link to="/cart">購物車</Link>
+          <Link to="/cart">購物車 ({cartCount})</Link>
         </li>
         <li>
           <Link to="/checkout">查看結帳</Link>
         </li>
         <li>
-          <button className="navbar-button">
+          <button className="navbar-button" onClick={onLogout}>
             登出
           </button>
         </li>
-        <li>
-          <Link to="/login" className="navbar-button">登入</Link>
-        </li>
+         </>
+        ):(
+          <>
+            <li>
+              <Link to="/login" className="navbar-button">登入</Link>
+            </li>
+
+        </>)}
+        
+        
       </ul>
     </nav>
   );
